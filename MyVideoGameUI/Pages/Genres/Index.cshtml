@@ -1,0 +1,36 @@
+﻿@page
+@model MyVideoGameUI.Pages.Genres.IndexModel
+@{
+    ViewData["Title"] = "Genre List";
+}
+
+
+<div class="container">
+    <div class="row mb-3">
+        <div class="col-sm-3">
+            <h2 class="text-primary">Genre List</h2>
+        </div>
+        <div class="col-sm-9">
+            <a asp-page="AddGenre" class="btn btn-primary">Add Genre</a>
+        </div>
+    </div>
+    <div class="row mb-3 border border-primary">
+        <div class="col-sm-3 text-primary">Genre ID</div>
+        <div class="col-sm-9 text-primary">Genre Name</div>
+        @foreach (var obj in Model.Genres)
+        {
+            <div class="col-sm-3">
+                <label class="form-text">@obj.GenreId</label>
+            </div>
+            <div class="col-sm-9">
+                <label class="form-text">@obj.GenreName</label>
+                <form method="post">
+                            <button type="submit" asp-route-id="@obj.GenreId" class="btn btn-danger" style="float: right"
+                            onclick="return confirm('Are you sure you want to delete this?')">
+                                <i class="bi bi-archive-fill"></i>Delete Genre
+                                </button>
+                 </form>
+            </div>
+        }
+    </div>
+</div>

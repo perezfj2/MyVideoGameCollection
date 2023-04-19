@@ -1,0 +1,62 @@
+﻿@page
+@model MyVideoGameUI.Pages.Publishers.IndexModel
+@{
+    ViewData["Title"] = "Publisher List";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <h2>Publisher List</h2>
+        </div>
+         <div class="col-sm-9">
+            <a class="btn btn-primary" asp-page="AddPublisher">Add Publisher</a>
+        </div>
+    </div>
+
+
+@foreach(var obj in Model.PublisherList)
+{
+
+        <div class="row">
+            <!-- Team Member 1 -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-0 shadow">
+                    <img src="@obj.PublisherLogoURL" class="card-img-top" alt="@obj.PublisherName">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-0">@obj.PublisherName</h5>
+                        <div class="card-text text-black-50">@obj.PublisherWebsite</div>
+                    </div>
+                    
+                </div>
+            
+                 <div class="col-sm-12 mt-2" align="center">
+                        <form method="post">
+                            <a asp-page="EditPublisher" asp-route-id="@obj.PublisherId" class="btn btn-primary">
+                                <i class="bi bi-pencil-square"></i>Edit Publisher
+                            </a>
+                            <button type="submit" asp-route-id="@obj.PublisherId" class="btn btn-danger"
+                                onclick="return confirm('Are you sure you want to delete this?')">
+                                <i class="bi bi-archive-fill"></i>Delete Publisher
+                            </button>
+                        </form>
+                 </div>
+            </div>
+            <div class="col-sm-9">
+                <!-- Publisher Name -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        Publisher Info:
+                    </div>
+                    <div class="col-sm-12">
+                        @obj.PublisherBio
+                    </div>
+                </div>
+            </div>
+      
+        </div>
+    
+ 
+  
+}
+</>

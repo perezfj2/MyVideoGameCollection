@@ -1,0 +1,150 @@
+﻿@page
+@model MyVideoGameUI.Pages.VideoGames.AddVideoGameModel
+@{
+    ViewData["Title"] = "Add Video Game";
+}
+
+<script type="text/javascript">
+    function = validateInput(){
+        var isValid = true;
+        var GameTitle = document.getElementById("inputGameTitle");
+        var GameSummary = document.getElementById("inputGameSummary");
+        var GameRating = document.getElementById("inputGameRating");
+        var ddLanguage = document.getElementById("ddlLanguage");
+        var ddPlayerMode = document.getElementById("ddlPlayerMode");
+        var ddContentRating = document.getElementById("ddlContentRating");
+        var ddPublisher = document.getElementById("ddlPublisher");
+        var releaseDate = document.getElementById("inputReleaseDate");
+        var genresSelected = document.getElementByName("GenresSelected");
+        var consolesSelected = document.getElementByName("ConsolesSelected");
+    
+
+        if (GameTitle.value == "") {
+            isValid = false;
+            document.getElementById("gameTitleError").innerHTML = "This field is required.";
+        }
+        if (GameSummary.value == "") {
+            isValid = false;
+            document.getElementById("gameSummaryError").innerHTML = "This field is required.";
+        }
+        if (GameRating.value == null) {
+            isValid = false;
+            document.getElementById("gameRatingError").innerHTML = "This field is required.";
+        }
+        if (ddlLanguage.value == null) {
+            isValid = false;
+            document.getElementById("ddLanguageError").innerHTML = "This field is required.";
+        }
+        if (ddlPlayerMode.value == null) {
+            isValid = false;
+            document.getElementById("ddPlayerModeError").innerHTML = "This field is required.";
+        }
+        if (ddPublisher.value == null) {
+            isValid = false;
+            document.getElementById("ddPublisherError").innerHTML = "This field is required.";
+        }
+        if (releaseDate.value == null) {
+            isValid = false;
+            document.getElementById("releaseDateError").innerHTML = "This field is required.";
+        }
+        if (genresSelected.value == null) {
+            isValid = false;
+            document.getElementByName("genresSelectedError").innerHTML = "This field is required.";
+        }
+        if (consolesSelected.value == null) {
+            isValid = false;
+            document.getElementByName("consolesSelectedError").innerHTML = "This field is required.";
+        }
+        return isValid;
+    }
+</script>
+
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row mb-3">
+        <h2 class="col-sm-12 text-primary">
+            Add Video Game
+        </h2>
+    </div>
+    <div class="row mb-3">
+        <label for="inputGameTitle" class="col-sm-2 col-form-label">Game Title:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputGameTitle" asp-for="NewVideoGame.GameTitle" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="inputGameImageURL" class="col-sm-2 col-form-label">Game Cover Image:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputGameImageURL" asp-for="NewVideoGame.GameImageURL" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="inputGameSummary" class="col-sm-2 col-form-label">Game Summary:</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" id="inputGameSummary" asp-for="NewVideoGame.GameSummary" rows="4"></textarea>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="inputGameRating" class="col-sm-2 col-form-label">Game Rating:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputGameRating" asp-for="NewVideoGame.GameRating" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="ddlLanguage" class="col-sm-2 col-form-label">Language:</label>
+        <div class="col-sm-10">
+            <select asp-for="NewVideoGame.LanguageId" asp-items="@Model.Languages" id="ddlLanguage"></select>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="ddlPlayerMode" class="col-sm-2 col-form-label">Player Mode:</label>
+        <div class="col-sm-10">
+            <select asp-for="NewVideoGame.PlayerModeId" asp-items="@Model.PlayerModes" id="ddlPlayerMode"></select>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="ddlContentRating" class="col-sm-2 col-form-label">Content Rating:</label>
+        <div class="col-sm-10">
+            <select asp-for="NewVideoGame.ContentRatingId" asp-items="@Model.ContentRatings" id="ddlContentRating"></select>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="ddlPublisher" class="col-sm-2 col-form-label">Publisher:</label>
+        <div class="col-sm-10">
+            <select asp-for="NewVideoGame.PublisherId" asp-items="@Model.Publishers" id="ddlPublisher"></select>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="inputReleaseDate" class="col-sm-2 col-form-label">Release Date:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputReleaseDate" asp-for="NewVideoGame.ReleaseDate" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Genre</label>
+        <div class="col-sm-10">
+            @for (var i = 0; i < Model.GenreList.Count(); i++)
+            {
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" name="GenresSelected" checked="@Model.GenreList[i].Selected" id="@Model.GenreList[i].Text" value="@Model.GenreList[i].Value" />
+                    <label class="form-check-label" for="@Model.GenreList[i].Text">@Model.GenreList[i].Text</label>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">Console</label>
+        <div class="col-sm-10">
+            @for (var i = 0; i < Model.ConsoleList.Count(); i++)
+            {
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" name="ConsolesSelected" checked="@Model.ConsoleList[i].Selected" id="@Model.ConsoleList[i].Text" value="@Model.ConsoleList[i].Value" />
+                    <label class="form-check-label" for="@Model.ConsoleList[i].Text">@Model.ConsoleList[i].Text</label>
+                </div>
+            }
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary" onclick="return validateInput()">Add Game</button>
+
+</form>

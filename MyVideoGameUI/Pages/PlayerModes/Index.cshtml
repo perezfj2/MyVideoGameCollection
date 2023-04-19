@@ -1,0 +1,35 @@
+﻿@page
+@model MyVideoGameUI.Pages.PlayerModes.IndexModel
+@{
+    ViewData["Title"] = "Player Mode List";
+}
+
+<div class="container">
+    <div class="row mb-3">
+        <div class="col-sm-3">
+            <h2 class="text-primary">PlayerMode List</h2>
+        </div>
+        <div class="col-sm-9">
+            <a asp-page="AddPlayerMode" class="btn btn-primary">Add PlayerMode</a>
+        </div>
+    </div>
+    <div class="row mb-3 border border-primary">
+        <div class="col-sm-3 text-primary">PlayerMode ID</div>
+        <div class="col-sm-9 text-primary">PlayerMode Name</div>
+        @foreach (var obj in Model.PlayerModes)
+        {
+            <div class="col-sm-3">
+                <label class="form-text">@obj.PlayerModeId</label>
+            </div>
+            <div class="col-sm-9">
+                <label class="form-text">@obj.PlayerModeName</label>
+                <form method="post">
+                            <button type="submit" asp-route-id="@obj.PlayerModeId" class="btn btn-danger" style="float: right"
+                            onclick="return confirm('Are you sure you want to delete this?')">
+                                <i class="bi bi-archive-fill"></i>Delete PlayerMode
+                                </button>
+                 </form>
+            </div>
+        }
+    </div>
+</div>

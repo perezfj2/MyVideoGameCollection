@@ -1,0 +1,58 @@
+﻿@page
+@model MyVideoGameUI.Pages.Publishers.AddPublisherModel
+@{
+    ViewData["Title"] = "Add Publisher";
+}
+
+<script type="text/javascript">
+    function = validateInput(){
+        var isValid = true;
+        var publisherName = document.getElementById("inputPublisherName");
+        var publisherBio = document.getElementById("inputPublisherBio");
+        if (publisherName.value == "") {
+            isValid = false;
+            document.getElementById("publisherNameError").innerHTML = "This field is required.";
+        }
+        if (publisherBio.value == "") {
+            isValid = false;
+            document.getElementById("publisherBioError").innerHTML = "This field is required.";
+        }
+        return isValid;
+    }
+    
+</script>
+
+<form method = "post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class=" = "row mb-3">
+        <label for ="inputPublisherName" class="col-sm-2 col-form-label" asp-for="NewPublisher.PublisherName"></label>
+        <div class = "col-sm-10">
+            <input type = "text" class="form-control" id="inputPublisherName" asp-for = "NewPublisher.PublisherName"/>
+            <span asp-validation-for="NewPublisher.PublisherName" class="text-danger" id="publisherNameError"></span>
+        </div>
+    </div>
+
+    <div class=" = "row mb-3">
+        <label for="inputPublisherLogoURL" class="col-sm-2 col-form-label" asp-for="NewPublisher.PublisherLogoURL"></label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPublisherLogoURL" asp-for = "NewPublisher.PublisherLogoURL"/>
+        </div>
+    </div>
+
+    <div class=" = " row mb-3">
+        <label for="inputPublisherBio" class="col-sm-2 col-form-label" asp-for="NewPublisher.PublisherBio"></label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPublisherBio" asp-for="NewPublisher.PublisherBio" />
+        </div>
+    </div>
+
+    <div class=" = "row mb-3">
+        <label for="inputPublisherWebsite" class="col-sm-2 col-form-label" asp-for="NewPublisher.PublisherWebsite"></label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPublisherWebsite" asp-for="NewPublisher.PublisherWebsite" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" onclick="return validateInput()">Add Publisher</button>
+</form>
+

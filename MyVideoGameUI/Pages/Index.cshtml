@@ -1,0 +1,75 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<head>
+
+    <!-- Add icon library -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <style>
+        .login-border {
+            margin: auto;
+            border: 2px solid black;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: white;
+            width: 500px;
+            height: 600px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<div class="text-center my-5">
+    <h1 class="display-5">Welcome to Your Video Game Collection!</h1>
+</div>
+
+<style>
+    body{
+        background-image: url(https://www.atanet.org/wp-content/uploads/2020/03/feature-images6-2.jpg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+    }
+</style>
+
+<body>
+<div class="login-border">
+    <h2 class="">User Login:</h2>
+    <form method="post">
+        <div class="form-group mb-3 text-start">
+            <label for="username">Username:</label>
+            <input type="text" class="form-control" id="username" name="username" />
+        </div>
+
+        <div class="form-group mb-3 text-start">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" />
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-2">Sign in</button>
+
+        <div>
+            <p class="mt-5">Don't have account yet?</p>
+            <p class="mt-2">SIGN UP</p>
+        </div>
+    </form>
+</div>
+
+    
+</body>
+
+       
+
+
+
+
+
+
+

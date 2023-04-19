@@ -1,0 +1,43 @@
+﻿@page
+@model MyVideoGameUI.Pages.User.AddModel
+@{
+}
+
+<form action = "post">
+    <div class=" = "row mb-3">
+        <label for ="inputEmail" class="col-sm-2 col-form-label">Email:</label>
+        <div class = "col-sm-10">
+            <input type = "text" class="form-control" id="inputEmail"/>
+        </div>
+    </div>
+
+    <div class=" = "row mb-3">
+        <label for="inputFirstName" class="col-sm-2 col-form-label">First Name:</label>
+        <div class="col-sm-10">
+            <input type="file" class="form-control" id="inputFirstName" />
+        </div>
+    </div>
+
+    <div class=" = "row mb-3">
+        <label for="inputLastName" class="col-sm-2 col-form-label">Last Name:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputLastName" />
+        </div>
+    </div>
+
+    <div class=" = " row mb-3">
+        <label for="inputUserProfileImage" class="col-sm-2 col-form-label">UserProfileImage:</label>
+        <div class="col-sm-10">
+            <input type="file" class="form-control" id="inputUserProfileImage" />
+        </div>
+    </div>
+
+    <div class=" = " row mb-3">
+        <label for="inputPassword" class="col-sm-2 col-form-label">Password:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputPassword" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add User</button>
+</form>

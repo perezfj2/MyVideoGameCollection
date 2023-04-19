@@ -1,0 +1,204 @@
+﻿@page
+@model MyVideoGameUI.Pages.Search.IndexModel
+@{
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Game Catalog Search</title>
+</head>
+<body>
+
+
+
+
+<div class="search-container">
+    <h1>Search for Video Games</h1>
+        <form method="get" action="/Search">
+            <input type="text" name="query" placeholder="Search...">
+            <select name="Console">
+                @foreach (var obj in Model.ConsoleList)
+                {
+                    <option value="@obj.Text">@obj.Text</option>
+                }
+
+            </select>
+            <select name="Genre">
+                @foreach (var obj in Model.GenreList)
+                {
+                    <option value="@obj.Text">@obj.Text</option>
+                }
+
+            </select>
+            <select name = "Language">
+                @foreach (var obj in Model.Languages)
+                {
+                    <option value="@obj.Text">@obj.Text</option>
+                }
+
+            </select>
+            <select name="PlayerMode">
+                @foreach (var obj in Model.PlayerModes)
+                {
+                    <option value="@obj.Text">@obj.Text</option>
+                }
+
+            </select>
+            <select name="ContentRating">
+                @foreach (var obj in Model.ContentRatings)
+                {
+                    <option value="@obj.Text">@obj.Text</option>
+                }
+
+            </select>
+            <select name="Publisher">
+                @foreach (var obj in Model.Publishers)
+                {
+                    <option value="@obj.Text">@obj.Text</option>
+                }
+
+            </select>
+            <button type="submit" value="Search">Search</button>
+        </form>
+</div>
+
+
+    <div class="category">
+        <h2>Game Results</h2>
+        <div class="games-container">
+            <div class="games">
+                @foreach (var game in Model.GameDetailList)
+                {
+                    <div class="game">
+                        <form method="post">
+                            <a asp-page="/VideoGames/DetailPage" asp-route-id="@game.GameId" class="btn btn-primary">
+                                <img src="@game.GameImageURL" alt="@game.GameTitle">
+                                <!-- <i class="bi bi-pencil-square"></i>Edit Game -->
+                            </a>
+                        </form>
+
+                        <h3>@game.GameTitle</h3>
+
+                    </div>
+                }
+            </div>
+            <div class="arrow-container">
+                <div class="arrow"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<style>
+    .search-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+    }
+    h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .search-inputs {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+    input[type="text"], select {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 250px;
+        font-size: 18px;
+        background-color: #fff;
+    }
+    button[type="submit"] {
+        background-color: #0078d7;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 18px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+    }
+    button[type="submit"]:hover {
+        background-color: #005a9e;
+    }
+
+
+        .category {
+            margin-bottom: 20px;
+        }
+
+            .category h2 {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+
+        .games-container {
+            overflow-x: scroll;
+            margin-right: -20px;
+        }
+
+        .games {
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        .game {
+            flex: 1 0 20%; /* adjust as needed */
+            flex-basis: 20%; /* adjust as needed */
+            margin-right: 2.5%; /* adjust as needed */
+            margin-bottom: 20px;
+        }
+
+            .game:last-child {
+                margin-right: 0;
+            }
+
+            .game img {
+                display: block;
+                width: 100px;
+                height: 100px;
+                max-height: 150px; /* adjust as needed */
+                object-fit: cover;
+                object-position: center;
+            }
+
+            .game h3 {
+                font-size: 18px;
+                margin-top: 10px;
+            }
+
+        .arrow-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-right: -20px;
+            margin-top: 10px;
+        }
+
+        .arrow {
+            width: 30px;
+            height: 30px;
+            background-image: url("arrow.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            cursor: pointer;
+        }
+</style>
+
+
+
+
+</body>
+</html>

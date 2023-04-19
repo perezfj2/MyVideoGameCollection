@@ -1,0 +1,223 @@
+﻿@page
+@model MyVideoGameUI.Pages.Browse_Page.IndexModel
+@{
+}
+
+<!DOCTYPE html>
+<html>
+
+<title>Browse Games</title>
+<style>
+    /* Add styling to your page here */
+    h1 {
+        text-align: center;
+    }
+
+    .category {
+        margin-bottom: 20px;
+    }
+
+    .games-container {
+        overflow-x: scroll;
+        margin-right: 35px;
+    }
+
+    .games {
+       display: flex;
+        flex-wrap: nowrap;
+        margin-right: 35px;
+    }
+
+
+
+    .game {
+    margin-right: 30px;
+    margin-bottom: 20px;
+}
+
+.game-item {
+    width: 100px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game img {
+    display: block;
+    width: 100px;
+    height: 100px;
+    max-height: 150px;
+    object-position: center;
+    margin-bottom: 10px;
+    margin-right: 30px; /* added */
+}
+
+.game h3 {
+    font-size: 18px;
+    margin-top: 0;
+    text-align: center;
+}
+
+
+    .arrow-container {
+        display: flex;
+        justify-content: flex-end;
+        margin-right: -50px;
+        margin-top: 10px;
+    }
+
+    .arrow {
+        width: 30px;
+        height: 30px;
+        background-image: url("arrow.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        cursor: pointer;
+    }
+
+</style>
+
+
+<body>
+    <h1>Browse Games</h1>
+
+    <div class="category">
+        <h2>Games A-Z</h2>
+        <div class="games-container">
+            <div class="games">
+                @foreach (var game in Model.GameDetailList)
+                {
+                    <div class="game">
+                        <form method="post">
+                            <a asp-page="/VideoGames/DetailPage" asp-route-id="@game.GameId" class="btn btn-primary">
+                                <img src="@game.GameImageURL" alt="@game.GameTitle">
+                                <!-- <i class="bi bi-pencil-square"></i>Edit Game -->
+                            </a>
+                        </form>
+
+                        <h3>@game.GameTitle</h3>
+
+                    </div>
+                }
+            </div>
+            <div class="arrow-container">
+                <div class="arrow"></div>
+            </div>
+        </div>
+        <h2>Action Games</h2>
+        <div class="games-container">
+            <div class="games">
+                @foreach (var game in Model.GameActionList)
+                {
+                    <div class="game">
+                        <form method="post">
+                            <a asp-page="/VideoGames/DetailPage" asp-route-id="@game.GameId" class="btn btn-primary">
+                                <img src="@game.GameImageURL" alt="@game.GameTitle">
+                                <!-- <i class="bi bi-pencil-square"></i>Edit Game -->
+                            </a>
+                        </form>
+
+                        <h3>@game.GameTitle</h3>
+
+                    </div>
+                }
+            </div>
+            <div class="arrow-container">
+                <div class="arrow"></div>
+            </div>
+        </div>
+        <h2>Adventure Games</h2>
+        <div class="games-container">
+            <div class="games">
+                @foreach (var game in Model.GameAdventureList)
+                {
+                    <div class="game">
+                        <form method="post">
+                            <a asp-page="/VideoGames/DetailPage" asp-route-id="@game.GameId" class="btn btn-primary">
+                                <img src="@game.GameImageURL" alt="@game.GameTitle">
+                                <!-- <i class="bi bi-pencil-square"></i>Edit Game -->
+                            </a>
+                        </form>
+
+                        <h3>@game.GameTitle</h3>
+
+                    </div>
+                }
+            </div>
+            <div class="arrow-container">
+                <div class="arrow"></div>
+            </div>
+        </div>
+        <h2>Single Player Games</h2>
+        <div class="games-container">
+            <div class="games">
+                @foreach (var game in Model.GameSinglePlayerList)
+                {
+                    <div class="game">
+                        <form method="post">
+                            <a asp-page="/VideoGames/DetailPage" asp-route-id="@game.GameId" class="btn btn-primary">
+                                <img src="@game.GameImageURL" alt="@game.GameTitle">
+                                <!-- <i class="bi bi-pencil-square"></i>Edit Game -->
+                            </a>
+                        </form>
+
+                        <h3>@game.GameTitle</h3>
+
+                    </div>
+                }
+            </div>
+            <div class="arrow-container">
+                <div class="arrow"></div>
+            </div>
+        </div>
+        <h2>Online Games</h2>
+        <div class="games-container">
+            <div class="games">
+                @foreach (var game in Model.GameOnlineList)
+                {
+                    <div class="game">
+                        <form method="post">
+                            <a asp-page="/VideoGames/DetailPage" asp-route-id="@game.GameId" class="btn btn-primary">
+                                <img src="@game.GameImageURL" alt="@game.GameTitle">
+                                <!-- <i class="bi bi-pencil-square"></i>Edit Game -->
+                            </a>
+                        </form>
+
+                        <h3>@game.GameTitle</h3>
+
+                    </div>
+                }
+            </div>
+            <div class="arrow-container">
+                <div class="arrow"></div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <!-- Add more categories and games here -->
+
+<script>
+  // Get the arrow element and attach an event listener to it
+  var arrow = document.querySelectorAll('.arrow');
+  for (var i = 0; i < arrow.length; i++) {
+    arrow[i].addEventListener('click', function() {
+      // Get the games container and calculate the new position
+      var container = this.parentNode.querySelector('.games');
+      var currentPosition = container.scrollLeft;
+      var newPosition = currentPosition + container.offsetWidth;
+      // Animate the scrolling to the new position
+      container.scrollTo({
+        left: newPosition,
+        behavior: 'smooth'
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
+
+

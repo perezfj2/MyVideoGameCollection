@@ -1,0 +1,26 @@
+﻿@page
+@model MyVideoGameUI.Pages.Consoles.AddConsoleModel
+@{
+    ViewData["Title"] = "Add Console";
+}
+
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class=" = " row mb-3">
+        <label for="inputConsoleName" class="col-sm-2 col-form-label" asp-for="NewConsole.ConsoleName"></label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputConsoleName" asp-for="NewConsole.ConsoleName" />
+            <span asp-validation-for="NewConsole.ConsoleName" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class=" = "row mb-3">
+        <label for="inputConsoleImageURL" class="col-sm-2 col-form-label" asp-for="NewConsole.ConsoleImageURL"></label>
+    <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputConsoleImageURL" asp-for = "NewConsole.ConsoleImageURL"/>
+        </div>
+    </div>
+
+    
+    <button type="submit" class="btn btn-primary">Add Console</button>
+</form>

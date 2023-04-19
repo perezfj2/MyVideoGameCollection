@@ -1,0 +1,39 @@
+﻿@page
+@model MyVideoGameUI.Pages.ContentRatings.IndexModel
+@{
+    ViewData["Title"] = "Content Rating List";
+}
+
+<div class="container">
+    <div class="row mb-3">
+        <div class="col-sm-3">
+            <h2 class="text-primary">ContentRating List</h2>
+        </div>
+        <div class="col-sm-9">
+            <a asp-page="AddContentRating" class="btn btn-primary">Add ContentRating</a>
+        </div>
+    </div>
+    <div class="row mb-3 border border-primary">
+        <div class="col-sm-3 text-primary">ContentRating ID</div>
+        <div class="col-sm-9 text-primary">ContentRating Name</div>
+        @foreach (var obj in Model.ContentRatings)
+        {
+            <div class="col-sm-3">
+                <label class="form-text">@obj.ContentRatingId</label>
+            </div>
+            <div class="col-sm-9">
+                <label class="form-text">@obj.ContentRatingName</label>
+                <form method="post">
+                  <button type="submit" asp-route-id="@obj.ContentRatingId" class="btn btn-danger" style="float: right"
+                        onclick="return confirm('Are you sure you want to delete this?')">
+                            <i class="bi bi-archive-fill"></i>Delete ContentRating
+                  </button>
+                </form>
+                    
+            </div>  
+
+        }
+    </div>
+</div>
+
+

@@ -1,0 +1,40 @@
+﻿@page
+@model MyVideoGameUI.Pages.Developers.IndexModel
+@{
+}
+
+<form action = "post">
+    <div class = "row mb-3">
+        <label for="inputDeveloperName=" class="col-sm-2 col-form-label"> Developer Name: </label>
+        <div class = "col-sm-10">
+            <input type ="text" class="form-control" id="inputDeveloperName" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="inputDeveloperBio=" class="col-sm-2 col-form-label"> Developer Bio: </label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputDeveloperBio" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="inputDeveloperImage=" class="col-sm-2 col-form-label"> Developer Image: </label>
+        <div class="col-sm-10">
+            <input type="file" class="form-control" id="inputDeveloperName" />
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="inputDeveloperWebsite=" class="col-sm-2 col-form-label"> Developer Website: </label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputDeveloperWebsite" />
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Developer</button>
+
+    
+
+    
+</form>
